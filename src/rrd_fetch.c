@@ -204,6 +204,9 @@ int rrd_fetch(
 			    cf, start, end, step, ds_cnt, ds_namv, data);
     }
     else
+        status = rrdc_flush(options.argv[options.optind]);
+        if (status) return (-1);
+
 	    status = rrd_fetch_r(options.argv[options.optind],
 			    cf, start, end, step, ds_cnt, ds_namv, data);
 
